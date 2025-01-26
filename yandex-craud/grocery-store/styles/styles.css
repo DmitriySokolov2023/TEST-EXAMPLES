@@ -1,0 +1,56 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: 'YandexSansText-Medium';
+	src: url('../assets/fonts/yandexsanstext-medium.eot');
+	src: url('../assets/fonts/yandexsanstext-medium.eot?#iefix')
+			format('embedded-opentype'),
+		url('../assets/fonts/yandexsanstext-medium.woff2') format('woff2'),
+		url('../assets/fonts/yandexsanstext-medium.woff') format('woff'),
+		url('../assets/fonts/yandexsanstext-medium.ttf') format('truetype'),
+		url('../assets/fonts/yandexsanstext-medium.svg#yandexsanstext-medium')
+			format('svg');
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: end;
+	height: 100vh;
+	width: 100vw;
+	background-color: #f4f4f4;
+}
+
+.banner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-image: url('../assets/images/storefront.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.storefront {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.cart {
+	position: relative;
+}
+.checkout-btn {
+	position: absolute;
+	top: 60%;
+	left: 20%;
+	font-family: 'YandexSansText-Medium';
+	border: none;
+	background-color: #fce000;
+	font-size: 18px;
+	border-radius: 16px;
+	padding: 20px;
+}

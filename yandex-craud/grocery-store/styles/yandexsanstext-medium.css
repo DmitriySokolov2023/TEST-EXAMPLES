@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'YandexSansText-Medium';
+	src: url('../fonts/yandexsanstext-medium.eot');
+	src: url('../fonts/yandexsanstext-medium.eot?#iefix')
+			format('embedded-opentype'),
+		url('../fonts/yandexsanstext-medium.woff2') format('woff2'),
+		url('../fonts/yandexsanstext-medium.woff') format('woff'),
+		url('../fonts/yandexsanstext-medium.ttf') format('truetype'),
+		url('../fonts/yandexsanstext-medium.svg#yandexsanstext-medium')
+			format('svg');
+}
