@@ -26,18 +26,26 @@ body {
 }
 
 .banner {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-image: url('../assets/images/storefront.png');
-	background-repeat: no-repeat;
-	background-position: center;
 }
-
+.product {
+	position: absolute;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: auto;
+}
+#product1 {
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
+}
 .storefront {
+	height: 100vh;
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	justify-content: end;
+	background-image: url('../assets/images/storefront.png');
+	background-position: 50% 75%;
+	background-repeat: no-repeat;
 }
 
 .cart {
