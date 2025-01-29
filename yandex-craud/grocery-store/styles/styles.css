@@ -50,7 +50,71 @@ body {
 	position: absolute;
 	bottom: -100px;
 }
-
+.cart_drop {
+	z-index: -1;
+	position: absolute;
+	top: 5%;
+	left: 25%;
+	width: 70%;
+	height: 70%;
+}
+.cart_drop img {
+	width: 15%;
+}
+.cart_drop img:nth-child(1) {
+	position: absolute;
+	bottom: 0;
+}
+.cart_drop img:nth-child(2) {
+	position: absolute;
+	left: 15%;
+	bottom: 0;
+}
+.cart_drop img:nth-child(3) {
+	position: absolute;
+	left: 25%;
+	bottom: 0;
+}
+.cart_drop img:nth-child(4) {
+	position: absolute;
+	left: 35%;
+	bottom: 0;
+}
+.cart_drop img:nth-child(5) {
+	position: absolute;
+	left: 45%;
+	bottom: 0;
+}
+.cart_drop img:nth-child(6) {
+	position: absolute;
+	left: 55%;
+	bottom: 0;
+}
+.cart_drop img:nth-child(7) {
+	position: absolute;
+	left: 65%;
+	bottom: 0;
+}
+.cart_drop img:nth-child(8) {
+	position: absolute;
+	left: 75%;
+	bottom: 0;
+}
+.cart_drop img:nth-child(9) {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+}
+.cart_drop img:nth-child(10) {
+	position: absolute;
+	left: 60%;
+	bottom: 0;
+}
+.cart_drop img:nth-child(11) {
+	position: absolute;
+	left: 70%;
+	bottom: 0;
+}
 .cart button {
 	position: absolute;
 	left: 18%;
@@ -63,12 +127,7 @@ body {
 	border-radius: 20px;
 	cursor: pointer;
 }
-.drop-zone {
-	z-index: -1;
-	width: 75%;
-	height: 75%;
-	position: absolute;
-	left: 25%;
-	top: 0%;
-	border: 1px dashed black;
+
+.hidden {
+	visibility: hidden;
 }

@@ -1,5 +1,7 @@
 const products = document.querySelectorAll('.product')
 const basket = document.getElementById('cart')
+const basket_drop = document.getElementById('cart_drop')
+const button = document.querySelector('.cart_button')
 let itemCount = 0
 
 products.forEach(product => {
@@ -9,32 +11,9 @@ products.forEach(product => {
 	})
 
 	product.addEventListener('dragend', event => {
-		event.target.style.display = 'inline'
+		event.target.style = ''
 	})
 })
-
-function addToBasket(product) {
-	product.style.display = 'none'
-	const clonedProduct = product.cloneNode(true)
-	clonedProduct.style.display = 'block'
-	clonedProduct.style.width = '50px'
-
-	const randomX = Math.random() * 40 - 20
-	const randomY = Math.random() * 30 - 10
-	const randomRotate = Math.random() * 30 - 15
-
-	clonedProduct.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`
-
-	basket.appendChild(clonedProduct)
-	itemCount++
-
-	// ✅ Показываем кнопку "Оплатить" после 3 товаров
-	if (itemCount >= 3) {
-		document.getElementById('payButton').classList.remove('hidden')
-	}
-}
-
-// 📌 Перетаскивание мышью (для ПК)
 
 basket.addEventListener('dragover', event => {
 	event.preventDefault()
@@ -46,11 +25,17 @@ basket.addEventListener('drop', event => {
 	basket.classList.remove('dragover')
 
 	const productId = event.dataTransfer.getData('id')
-	console.log(productId)
 	const product = document.getElementById(productId)
-	console.log(product)
-	if (product) addToBasket(product)
+	if (product) {
+		basket_drop.append(product)
+		itemCount++
+	}
+	if (itemCount == 3) {
+		button.classList.remove('hidden')
+	}
 })
+
+//Мобильная версия
 
 products.forEach(product => {
 	product.addEventListener('touchstart', event => {
@@ -62,8 +47,8 @@ products.forEach(product => {
 		event.preventDefault()
 		let touch = event.touches[0]
 		product.style.position = 'absolute'
-		product.style.left = touch.pageX - 30 + 'px'
-		product.style.top = touch.pageY - 30 + 'px'
+		product.style.left = touch.pageX - 100 + 'px'
+		product.style.top = touch.pageY - 150 + 'px'
 	})
 
 	product.addEventListener('touchend', event => {
@@ -81,7 +66,12 @@ products.forEach(product => {
 			touchY >= basketRect.top &&
 			touchY <= basketRect.bottom
 		) {
-			addToBasket(product)
+			basket_drop.append(product)
+			itemCount++
+			product.style = ''
+			if (itemCount == 3) {
+				button.classList.remove('hidden')
+			}
 		} else {
 			product.style.position = 'static'
 		}
