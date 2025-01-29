@@ -15,3 +15,60 @@
 		url('../assets/fonts/yandexsanstext-medium.svg#yandexsanstext-medium')
 			format('svg');
 }
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+}
+
+.storefront {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	position: relative;
+	margin-bottom: 100px;
+}
+
+.products {
+	top: 0;
+	gap: 20px;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+}
+.products img {
+	cursor: grab;
+}
+
+.cart {
+	z-index: 1;
+	position: absolute;
+	bottom: -100px;
+}
+
+.cart button {
+	position: absolute;
+	left: 18%;
+	top: 40%;
+	font-family: 'YandexSansText-Medium';
+	font-size: 20px;
+	background-color: rgb(255, 229, 80);
+	border: none;
+	padding: 20px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+.drop-zone {
+	z-index: -1;
+	width: 75%;
+	height: 75%;
+	position: absolute;
+	left: 25%;
+	top: 0%;
+	border: 1px dashed black;
+}
