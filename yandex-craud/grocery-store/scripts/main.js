@@ -7,27 +7,27 @@ let itemCount = 0
 products.forEach(product => {
 	product.addEventListener('dragstart', event => {
 		event.dataTransfer.setData('id', event.target.id)
-		setTimeout(() => (event.target.style.display = 'none'), 0)
+		setTimeout(() => (event.target.style.opacity = 0), 0)
 	})
 
 	product.addEventListener('dragend', event => {
-		event.target.style = ''
+		const alreadyExist = document.querySelectorAll(`#${event.target.id}`)
+		if (alreadyExist.length > 1) {
+			event.target.style.opacity = 0
+		} else event.target.style = ''
 	})
-})
-
-basket.addEventListener('dragover', event => {
-	event.preventDefault()
-	basket.classList.add('dragover')
 })
 
 basket.addEventListener('drop', event => {
 	event.preventDefault()
-	basket.classList.remove('dragover')
 
 	const productId = event.dataTransfer.getData('id')
-	const product = document.getElementById(productId)
-	if (product) {
-		basket_drop.append(product)
+	document.getElementById(productId).opacity = 0
+	const productClone = document.getElementById(productId).cloneNode(true)
+
+	if (productClone) {
+		productClone.style.opacity = 1
+		basket_drop.append(productClone)
 		itemCount++
 	}
 	if (itemCount == 3) {
@@ -40,7 +40,6 @@ basket.addEventListener('drop', event => {
 products.forEach(product => {
 	product.addEventListener('touchstart', event => {
 		event.preventDefault()
-		product.classList.add('dragging')
 	})
 
 	product.addEventListener('touchmove', event => {
@@ -53,12 +52,12 @@ products.forEach(product => {
 
 	product.addEventListener('touchend', event => {
 		event.preventDefault()
-		product.classList.remove('dragging')
 
 		// Проверяем, попал ли товар в корзину
 		let basketRect = basket.getBoundingClientRect()
 		let touchX = event.changedTouches[0].clientX
 		let touchY = event.changedTouches[0].clientY
+		const productClone = product.cloneNode(true)
 
 		if (
 			touchX >= basketRect.left &&
@@ -66,14 +65,17 @@ products.forEach(product => {
 			touchY >= basketRect.top &&
 			touchY <= basketRect.bottom
 		) {
-			basket_drop.append(product)
-			itemCount++
 			product.style = ''
+			productClone.style = ''
+			productClone.style.opacity = 1
+			basket_drop.append(productClone)
+			itemCount++
+
 			if (itemCount == 3) {
 				button.classList.remove('hidden')
 			}
 		} else {
-			product.style.position = 'static'
+			product.style.opacity = 1
 		}
 	})
 })
